@@ -1,0 +1,70 @@
+swagger: '2.0'
+info:
+  description: DB2XSLX API ドキュメント
+  version: 0.0.1
+  title: DB2XSLX REST APIs
+#basePath: /
+tags:
+  - name: db2xslx
+    description: DB2XSLX API
+schemes:
+  - http
+  - https
+paths:
+  /db2xslx:
+    post:
+      tags:
+        - db2xslx
+      summary: DB to Excel
+      description: DB to Excel API
+      produces:
+        - application/json
+      consumes:
+        - multipart/form-data
+      parameters:
+        - name: database_url
+          in: formData
+          type: string
+          description: データベース接続 URL
+      responses:
+        '200':
+          description: 成功
+        '400':
+          description: エラー
+  /xslx2db:
+    post:
+      tags:
+        - db2xslx
+      summary: Excel to DB
+      description: Excel to DB API
+      produces:
+        - application/json
+      consumes:
+        - multipart/form-data
+      parameters:
+        - name: database_url
+          in: formData
+          type: string
+          description: データベース接続 URL
+        - name: col_attr
+          in: formData
+          type: string
+          description: シートの２行目が列定義か？
+        - name: drop_table
+          in: formData
+          type: string
+          description: インポート先テーブルを削除（drop table）してから、内容で作成（create table)して作成（insert into table）実行するか？
+        - name: create_table
+          in: formData
+          type: string
+          description: インポート先テーブルをシートの内容で新規作成（create table)してから作成（insert into table）実行するか？
+        - name: file
+          in: formData
+          type: file
+          description: 画像ファイル
+          required: true
+      responses:
+        '200':
+          description: 成功
+        '400':
+          description: エラー
