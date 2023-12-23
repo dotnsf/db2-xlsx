@@ -1,12 +1,12 @@
 swagger: '2.0'
 info:
-  description: DB2XSLX API ドキュメント
+  description: DB2XLSX API ドキュメント
   version: 0.0.1
-  title: DB2XSLX REST APIs
+  title: DB2XLSX REST APIs
 #basePath: /
 tags:
-  - name: db2xslx
-    description: DB2XSLX API
+  - name: db2xlsx
+    description: DB2XLSX API
 schemes:
   - http
   - https
@@ -14,7 +14,7 @@ paths:
   /db2xslx:
     post:
       tags:
-        - db2xslx
+        - db2xlsx
       summary: DB to Excel
       description: DB to Excel API
       produces:
@@ -31,10 +31,10 @@ paths:
           description: 成功
         '400':
           description: エラー
-  /xslx2db:
+  /xlsx2db:
     post:
       tags:
-        - db2xslx
+        - db2xlsx
       summary: Excel to DB
       description: Excel to DB API
       produces:
