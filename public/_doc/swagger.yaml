@@ -11,7 +11,7 @@ schemes:
   - http
   - https
 paths:
-  /db2xslx:
+  /db2xlsx:
     post:
       tags:
         - db2xlsx
@@ -26,6 +26,7 @@ paths:
           in: formData
           type: string
           description: データベース接続 URL
+          required: true
       responses:
         '200':
           description: 成功
@@ -46,6 +47,7 @@ paths:
           in: formData
           type: string
           description: データベース接続 URL
+          required: true
         - name: col_attr
           in: formData
           type: string
@@ -61,7 +63,7 @@ paths:
         - name: file
           in: formData
           type: file
-          description: 画像ファイル
+          description: エクセルワークブックファイル
           required: true
       responses:
         '200':

@@ -221,18 +221,15 @@ app.post( '/xlsx2db', async function( req, res ){
         //. DB へインポート
         if( drop_table ){
           var r0 = await DB.dropTable( db, sheet );
+          //console.log(sheet,{r0});
         }
-        if( drop_table || create_table ){
+        if( create_table ){
           var r1 = await DB.createTable( db, sheet, cols, col_attrs );
-          if( r1 && r1.status ){
-            for( var i = 0; i < records.length; i ++ ){
-              var r2 = await DB.insertIntoTable( db, sheet, records[i] );
-            }
-          }
-        }else{
-          for( var i = 0; i < records.length; i ++ ){
-            var r2 = await DB.insertIntoTable( db, sheet, records[i] );
-          }
+          //console.log(sheet,{r1});
+        }
+        for( var i = 0; i < records.length; i ++ ){
+          var r2 = await DB.insertIntoTable( db, sheet, records[i] );
+          //console.log(sheet,i,{r2});
         }
 
         sheets_cnt ++;
